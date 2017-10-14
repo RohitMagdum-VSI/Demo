@@ -45,11 +45,15 @@ void customGlColor3f(customColor color)
 
 void drawBoy(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customColor pantColor)
 {
-	//Face	
-	glTranslatef(x + 0.0f, y + 0.25f, z + (-2.0f));
+	//Face
+	glLoadIdentity();
+
+	glTranslatef(x + 0.0f, y + 0.13f, z + (-2.0f));
+	//glTranslatef(x + 0.0f, y + 0.25f, z );
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
 
+	glScalef(0.5f, 0.5f, 0.5f);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	//quadric = gluNewQuadric();
 	glColor3f(0.2f, 0.20f, 0.20f);
@@ -58,10 +62,12 @@ void drawBoy(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customColo
 
 	//ears
 	glLoadIdentity();
-	glTranslatef(x + (-0.12f), y + 0.27f, z + (-2.0f));
+	glTranslatef(x + (-0.06f), y + 0.13f, z + (-2.0f));
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	glScalef(0.5f, 0.5f, 0.5f);
 
+	
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	quadric = gluNewQuadric();
 	glColor3f(0.80f, 0.60f, 0.40f);
@@ -69,9 +75,10 @@ void drawBoy(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customColo
 	gluSphere(quadric, 0.028, 80, 80);
 
 	glLoadIdentity();
-	glTranslatef(x + 0.12f, y + 0.27f, z + (-2.0f));
+	glTranslatef(x + 0.06f, y + 0.13f, z + (-2.0f));
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	glScalef(0.5f, 0.5f, 0.5f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	quadric = gluNewQuadric();
@@ -81,9 +88,10 @@ void drawBoy(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customColo
 
 	//shirt
 	glLoadIdentity();
-	glTranslatef(x + 0.0f, y + -0.14f, z + -2.0f);
+	glTranslatef(x + 0.0f, y + -0.07f, z + -2.0f);
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	glScalef(0.5f, 0.5f, 0.5f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	quadric = gluNewQuadric();
@@ -94,9 +102,10 @@ void drawBoy(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customColo
 
 	//Leg
 	glLoadIdentity();
-	glTranslatef(x + 0.0f, y + -0.35f, z + -2.0f);
+	glTranslatef(x + 0.0f, y + -0.17f, z + -2.0f);
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	glScalef(0.5f, 0.5f, 0.5f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	quadric = gluNewQuadric();
@@ -111,9 +120,10 @@ void drawGirl(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customCol
 	glLoadIdentity();
 
 	//Face	
-	glTranslatef(x + 0.45f, y + 0.25f, z + -2.0f);
+	glTranslatef(x + 0.45f, y + 0.12f, z + -2.0f);
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	glScalef(0.5f, 0.5f, 0.5f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	quadric = gluNewQuadric();
@@ -122,9 +132,10 @@ void drawGirl(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customCol
 	gluSphere(quadric, 0.2, 80, 80);
 
 	glLoadIdentity();
-	glTranslatef(x + 0.45f, y + 0.20f, z + -2.0f);
+	glTranslatef(x + 0.45f, y + 0.10f, z + -2.0f);
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	glScalef(0.5f, 0.5f, 0.5f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	quadric = gluNewQuadric();
@@ -134,9 +145,10 @@ void drawGirl(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customCol
 
 	//shirt
 	glLoadIdentity();
-	glTranslatef(x + 0.45f, y + -0.16f, z + (-2.0f));
+	glTranslatef(x + 0.45f, y + -0.08f, z + (-2.0f));
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	glScalef(0.5f, 0.5f, 0.5f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	quadric = gluNewQuadric();
@@ -147,9 +159,10 @@ void drawGirl(GLfloat x, GLfloat y, GLfloat z, customColor shirtColor, customCol
 
 	//Leg
 	glLoadIdentity();
-	glTranslatef(x + 0.45f, y + -0.33f, z + -2.0f);
+	glTranslatef(x + 0.45f, y + -0.16f, z + -2.0f);
 
 	glRotatef(0.0f, 0.0f, 1.0f, 0.0f);
+	glScalef(0.5f, 0.5f, 0.5f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	quadric = gluNewQuadric();

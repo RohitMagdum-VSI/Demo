@@ -1910,11 +1910,13 @@ void initialize(void)
 
 void display(void)
 {
+	static int forestflag = 0, rainflag = 0, malgudiflag = 0;
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	//glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 
+	static int counter = 0;
 	/*glLoadIdentity();
 	gluLookAt(0.0f, 5.0f, -15.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
@@ -1926,10 +1928,16 @@ void display(void)
 	//return;
 	static GLfloat stEyex = 0.0f, stEyey = 2.0f, stEyez = 0.0f ;
 
+	//goto TREE;
 	static int cameraIterator = 0;
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	if (!forestflag)
+	{
+		PlaySoundA("rainforest.wav", NULL, SND_ASYNC | SND_LOOP);
+		forestflag = 1;
+	}
 	//glTranslatef(0.0f, 0.0f, -3.0f);
 	//gluLookAt(vertices[cameraIterator].pos.x, 
 	//		  vertices[cameraIterator].pos.y + 3.0f, 
@@ -2076,15 +2084,24 @@ void display(void)
 		}
 	glEnd();
 
-
+	TREE:
 	glLoadIdentity();
-	if (cameraIterator == 700)
+	glColor3f(0.9, 0.9, 1.0);
+	glTranslatef(2.0f, -3.0f, -15.0f);
+
+	if (cameraIterator == 700 && counter < 400)
 	{
 //		glTranslatef(camera.eyex,
 //				camera.eyey,
 //				camera.eyez);
-		glColor3f(0.9, 0.9, 1.0);
-		glTranslatef(2.0f, -3.0f, -15.0f);
+		//glColor3f(0.9, 0.9, 1.0);
+		//glTranslatef(2.0f, -3.0f, -15.0f);
+		if (!rainflag)
+		{
+			PlaySoundA("rainthunderstorm.wav", NULL, SND_ASYNC | SND_LOOP);
+			rainflag = 1;
+		}
+
 		glBegin(GL_LINES);
 		for (size_t i = 0; i < RAINDROPS; i++)
 		{
@@ -2104,18 +2121,48 @@ void display(void)
 				initraindrops(i);
 		}
 		glEnd();
+		counter++;
+	}
+	if (counter >= 200)
+	{
+		if (!malgudiflag)
+		{
+			PlaySoundA("malgudiday_9p6ke3jv.wav", NULL, SND_ASYNC | SND_LOOP);
+			malgudiflag = 1;
+		}
 		if (nBranches < 7000)
 		{
 			GenerateTree();
 			nBranches++;
 		}
 		DrawTree();
+		counter++;
+	}
 
-		if (nBranches > 200)
-		{
-			glTranslatef(-0.5f, -2.0f, 0.0f);
-			drawBoy(0.15, 0.20, -0.10, red, blue);
-		}
+	if(counter > 400)
+	{
+		drawBoy(0.15, -.30, -0.10, red, cyan);
+			if (counter > 450)
+				drawGirl(0.00, -.30, -0.10, red, cyan);
+			if (counter > 500)
+				drawBoy(-0.00, -.30, -0.10, red, cyan);
+			if (counter > 550)
+				drawGirl(0.15, -.30, -0.10, red, cyan);
+			if (counter > 600)
+				drawBoy(-0.15, -.30, -0.10, red, cyan);
+			if (counter > 650)
+				drawGirl(0.30, -.30, -0.10, red, cyan);
+			if (counter > 700)
+				drawBoy(-0.30, -.30, -0.10, red, cyan);
+			if (counter > 750)
+				drawGirl(0.45, -.30, -0.10, red, cyan);
+			if (counter > 800)
+				drawBoy(-0.45, -.30, -0.10, red, cyan);
+			if (counter > 850)
+				drawGirl(0.60, -.30, -0.10, red, cyan);
+			if (counter > 900)
+				drawBoy(-0.60, -.30, -0.10, red, cyan);
+			counter++;
 	}
 	//k = 0;
 	SwapBuffers(ghdc);
