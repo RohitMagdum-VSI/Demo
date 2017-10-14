@@ -2134,6 +2134,7 @@ void display(void)
 			PlaySoundA("malgudiday_9p6ke3jv.wav", NULL, SND_ASYNC | SND_LOOP);
 			malgudiflag = 1;
 		}
+		glColor3f(153 / 255.0f, 126 / 255.0f, 87 / 255.0f);
 		glBegin(GL_TRIANGLES);
 			glVertex3f(20.0f, -3.0f, 15.0f);
 			glVertex3f(-30.0f, -3.0f, 20.0f);
