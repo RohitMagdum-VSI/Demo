@@ -2088,7 +2088,6 @@ void display(void)
 	glLoadIdentity();
 	glColor3f(0.9, 0.9, 1.0);
 	glTranslatef(2.0f, -3.0f, -15.0f);
-
 	if (cameraIterator == 700 && counter < 400)
 	{
 //		glTranslatef(camera.eyex,
@@ -2130,6 +2129,12 @@ void display(void)
 			PlaySoundA("malgudiday_9p6ke3jv.wav", NULL, SND_ASYNC | SND_LOOP);
 			malgudiflag = 1;
 		}
+		glBegin(GL_TRIANGLES);
+			glVertex3f(20.0f, -3.0f, 15.0f);
+			glVertex3f(-30.0f, -3.0f, 20.0f);
+			glVertex3f(2.0f, -3.0f, -16.0f);
+		glEnd();
+
 		if (nBranches < 7000)
 		{
 			GenerateTree();
@@ -2141,27 +2146,29 @@ void display(void)
 
 	if(counter > 400)
 	{
-		drawBoy(0.15, -.30, -0.10, red, cyan);
+		GLfloat stuPositionX = -0.15f;
+		GLfloat stuPositionZ = -0.15f;
+			drawBoy(stuPositionX - 0.15f, -.30, stuPositionZ -0.10, red, cyan);
 			if (counter > 450)
-				drawGirl(0.00, -.30, -0.10, red, cyan);
+				drawGirl(-stuPositionX + 0.00, -.30, stuPositionZ -0.15, red, cyan);
 			if (counter > 500)
-				drawBoy(-0.00, -.30, -0.10, red, cyan);
+				drawBoy(stuPositionX -0.00, -.30, stuPositionZ -0.10, red, cyan);
 			if (counter > 550)
-				drawGirl(0.15, -.30, -0.10, red, cyan);
+				drawGirl(-stuPositionX + 0.15, -.30, stuPositionZ -0.15, red, cyan);
 			if (counter > 600)
-				drawBoy(-0.15, -.30, -0.10, red, cyan);
+				drawBoy(stuPositionX -0.15, -.30, stuPositionZ -0.10, red, cyan);
 			if (counter > 650)
-				drawGirl(0.30, -.30, -0.10, red, cyan);
+				drawGirl(-stuPositionX + 0.30, -.30, stuPositionZ -0.15, red, cyan);
 			if (counter > 700)
-				drawBoy(-0.30, -.30, -0.10, red, cyan);
+				drawBoy(stuPositionX -0.30, -.30, stuPositionZ -0.10, red, cyan);
 			if (counter > 750)
-				drawGirl(0.45, -.30, -0.10, red, cyan);
+				drawGirl(-stuPositionX + 0.45, -.30, stuPositionZ -0.15, red, cyan);
 			if (counter > 800)
-				drawBoy(-0.45, -.30, -0.10, red, cyan);
+				drawBoy(stuPositionX -0.45, -.30, stuPositionZ -0.10, red, cyan);
 			if (counter > 850)
-				drawGirl(0.60, -.30, -0.10, red, cyan);
+				drawGirl(-stuPositionX + 0.60, -.30, stuPositionZ -0.15, red, cyan);
 			if (counter > 900)
-				drawBoy(-0.60, -.30, -0.10, red, cyan);
+				drawBoy(stuPositionX -0.60, -.30, stuPositionZ -0.10, red, cyan);
 			counter++;
 	}
 	//k = 0;
