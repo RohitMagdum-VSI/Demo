@@ -134,7 +134,7 @@ void GenerateTree()
    dlTree = glGenLists(1);
    glNewList(dlTree, GL_COMPILE);
 
-   DrawTexturedCylinder();
+   //DrawTexturedCylinder();
 
    DrawTreeInstance(baseStart, heightStart);
 
