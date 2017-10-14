@@ -3,6 +3,10 @@
 #include <math.h>
 #include <gl/GLU.h>
 #include <stdio.h>
+#include "Tree.h"
+#include <time.h>
+#include "Raindrop.h"
+#include "Students.h"
 
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 600
@@ -1436,9 +1440,14 @@ typedef struct CAMERA
 int indices[10000000];
 Camera camera;
 
+RAINDROP raindrops[RAINDROPS];
+float gzDepth = -40.0;
+float gGravity = -1.8;
+
 #define M 1000
 #define N 1000
 
+GLUquadric *quadric;
 Vertices vertices[M * N];
 
 Positions positions;
@@ -1470,12 +1479,16 @@ bool gbFullscreen = false;
 void display(void);
 void resize(int width, int height);
 
+extern GLint nBranches;
+
 //main()
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
 {
 	//function prototype
 	void initialize(void);
 	void uninitialize(void);
+
+	srand(time(NULL));
 
 	//variable declaration
 	WNDCLASSEX wndclass;
@@ -1862,6 +1875,18 @@ void initialize(void)
 	drawTerrain(M, N);
 	calculateIndices();
 
+	if (!ReadTreeData()) {
+		/* issue warning and exit */
+		printf("Unable to read the data from the specified file");
+		/*exit(0);*/
+	}
+
+
+	for (size_t i = 0; i < RAINDROPS; i++)
+	{
+		initraindrops(i);
+	}
+
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
 	glDepthFunc(GL_LEQUAL);
@@ -1871,6 +1896,13 @@ void initialize(void)
 //	initLight();
 	//glCullFace(GL_FRONT_AND_BACK);
 
+	//glEnable(GL_TEXTURE_2D);
+	//LoadTexture(IMAGE_NAME);
+	quadric = gluNewQuadric();
+
+	DrawLeaves();
+	GenerateTree();
+
 	resize(WIN_WIDTH, WIN_HEIGHT);
 }
 
@@ -1879,9 +1911,19 @@ void initialize(void)
 void display(void)
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glClearDepth(1.0f);
+	//glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+	glMatrixMode(GL_MODELVIEW);
+
+	/*glLoadIdentity();
+	gluLookAt(0.0f, 5.0f, -15.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+
+	glTranslatef(0.0f, -5.5f, 0.0f);*/
+//	glRotatef(sceneAngle, 0.0f, 1.0f, 0.0f);
+
+	//DrawTree();
+	//SwapBuffers(ghdc);
+	//return;
 	static GLfloat stEyex = 0.0f, stEyey = 2.0f, stEyez = 0.0f ;
 
 	static int cameraIterator = 0;
@@ -2034,7 +2076,47 @@ void display(void)
 		}
 	glEnd();
 
-	//glLoadIdentity();
+
+	glLoadIdentity();
+	if (cameraIterator == 700)
+	{
+//		glTranslatef(camera.eyex,
+//				camera.eyey,
+//				camera.eyez);
+		glColor3f(0.9, 0.9, 1.0);
+		glTranslatef(2.0f, -3.0f, -15.0f);
+		glBegin(GL_LINES);
+		for (size_t i = 0; i < RAINDROPS; i++)
+		{
+			float x = raindrops[i].x;
+			float y = raindrops[i].y;
+			float z = raindrops[i].z;
+
+			glVertex3f(x, y, z + gzDepth);
+			glVertex3f(x, y + 0.5, z + gzDepth);
+
+			raindrops[i].y += raindrops[i].speed / (2.0 * 1000);
+			raindrops[i].speed += gGravity;
+			raindrops[i].scope -= raindrops[i].scopeLife;
+
+			// for continiuos rain init it again
+			if (raindrops[i].scope< 0.0)
+				initraindrops(i);
+		}
+		glEnd();
+		if (nBranches < 7000)
+		{
+			GenerateTree();
+			nBranches++;
+		}
+		DrawTree();
+
+		if (nBranches > 200)
+		{
+			glTranslatef(-0.5f, -2.0f, 0.0f);
+			drawBoy(0.15, 0.20, -0.10, red, blue);
+		}
+	}
 	//k = 0;
 	SwapBuffers(ghdc);
 }
