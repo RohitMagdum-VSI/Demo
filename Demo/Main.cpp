@@ -7,6 +7,7 @@
 #include <time.h>
 #include "Raindrop.h"
 #include "Students.h"
+#include "Elements.h"
 
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 600
@@ -1487,6 +1488,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	//function prototype
 	void initialize(void);
 	void uninitialize(void);
+	void ToggleFullscreen();
 
 	srand(time(NULL));
 
@@ -1537,6 +1539,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	ShowWindow(hwnd, SW_SHOW);
 	SetForegroundWindow(hwnd);
 	SetFocus(hwnd);
+
+	ToggleFullscreen();
+	gbFullscreen = true;
 
 	//Message Loop
 	while (bDone == false)
@@ -2136,6 +2141,7 @@ void display(void)
 			nBranches++;
 		}
 		DrawTree();
+		DrawElements();
 		counter++;
 	}
 

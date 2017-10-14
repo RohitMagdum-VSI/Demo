@@ -470,3 +470,59 @@ void drawiOSIcon(POSITION position, EL_COLOR color)
 
 	drawChar.setWordToDisplayOnScreen();
 }
+
+void DrawElements(void)
+{
+	// ground
+	glColor3f(153 / 255.0f, 126 / 255.0f, 87 / 255.0f);
+	glBegin(GL_TRIANGLES);
+	glVertex3f(2.0f, -6.5f, -15.0f);
+	glVertex3f(-50.0f, -6.5f, -15.0f);
+	glVertex3f(20.0f, -6.5f, -15.0f);
+	glEnd();
+
+	EL_COLOR color;
+	POSITION pos;
+
+	//level 1 ------------------------------
+	pos = { -6.6f, -6.1f, -15.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawMedicalIcon(pos, color);
+
+	pos = { -1.2f, -6.1f, -15.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawDramaIcon(pos, color);
+
+	pos = { 1.4f, -6.1f, -15.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawTeacherIcon(pos, color);
+
+	pos = { 4.6f, -6.1f, -15.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawAstroIcon(pos, color);
+
+	//level 2 ------------------------------
+	pos = { -4.8f, -5.5f, -15.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawWin32Icon(pos, color);
+
+	pos = { -1.3f, -5.5f, -15.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawUnixIcon(pos, color);
+
+	pos = { 1.1f, -5.5f, -15.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawAppleIcon(pos, color);
+
+	pos = { 6.0f, -17.0f, -50.0f };
+	color = { 0.0f, 1.0f, 0.2f };
+	drawAndroidIcon(pos, color);
+
+	pos = { 10.0f, -20.0f, -50.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawOpenGlIcon(pos, color);
+
+	pos = { 14.0f, -15.0f, -50.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	drawiOSIcon(pos, color);
+}

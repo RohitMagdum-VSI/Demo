@@ -27,4 +27,6 @@ void drawiOSIcon(POSITION position, EL_COLOR color);
 void drawAndroidIcon(POSITION position, EL_COLOR color);
 void drawOpenGlIcon(POSITION position, EL_COLOR color);
 
+void DrawElements(void);
+
 #endif // !_Elements_h
