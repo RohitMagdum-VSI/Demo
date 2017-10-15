@@ -26,6 +26,8 @@ void drawAppleIcon(POSITION position, EL_COLOR color);
 void drawiOSIcon(POSITION position, EL_COLOR color);
 void drawAndroidIcon(POSITION position, EL_COLOR color);
 void drawOpenGlIcon(POSITION position, EL_COLOR color);
+void drawCUDAIcon(POSITION position, EL_COLOR color);
+void drawARMIcon(POSITION position, EL_COLOR color);
 
 void DrawElements(void);
 
