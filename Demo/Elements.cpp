@@ -1,10 +1,10 @@
 #include "Elements.h"
 #include "DrawChars.h"
 
+DrawChars drawChar;
+
 void drawMedicalIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -50,8 +50,6 @@ void drawMedicalIcon(POSITION position, EL_COLOR color)
 
 void drawDramaIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -97,8 +95,6 @@ void drawDramaIcon(POSITION position, EL_COLOR color)
 
 void drawTeacherIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -144,8 +140,6 @@ void drawTeacherIcon(POSITION position, EL_COLOR color)
 
 void drawAstroIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -191,8 +185,6 @@ void drawAstroIcon(POSITION position, EL_COLOR color)
 
 void drawAppleIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -238,8 +230,6 @@ void drawAppleIcon(POSITION position, EL_COLOR color)
 
 void drawWin32Icon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -285,8 +275,6 @@ void drawWin32Icon(POSITION position, EL_COLOR color)
 
 void drawUnixIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -332,8 +320,6 @@ void drawUnixIcon(POSITION position, EL_COLOR color)
 
 void drawAndroidIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -377,10 +363,8 @@ void drawAndroidIcon(POSITION position, EL_COLOR color)
 	drawChar.setWordToDisplayOnScreen();
 }
 
-void drawOpenGlIcon(POSITION position, EL_COLOR color)
+void drawiOSIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -412,7 +396,52 @@ void drawOpenGlIcon(POSITION position, EL_COLOR color)
 
 	vector<vector<double>>scaleValueVec;
 	scaleValueVec.resize(10);
-	scaleValueVec[0] = { 0.03f, 0.03f, 1.0f };
+	scaleValueVec[0] = { 0.025f, 0.025f, 1.0f };
+	
+	vector<string>  textToDraw;
+	std::string currentChars = "iOS";
+	textToDraw.push_back(currentChars);
+
+	drawChar.initDrawChar(wordSpacVec, charSpacVec, charWidth, traslateXParam, traslateYParam,
+		traslateZParam, rgbValueVec, scaleValueVec, textToDraw);
+
+	drawChar.setWordToDisplayOnScreen();
+}
+
+void drawOpenGlIcon(POSITION position, EL_COLOR color)
+{
+	vector<double> wordSpacVec;
+	wordSpacVec.resize(10);
+	wordSpacVec[0] = 0.0f;
+
+	vector<double> charSpacVec;
+	charSpacVec.resize(10);
+	charSpacVec[0] = 0.3f;
+
+	vector<double> charWidth;
+	charWidth.resize(10);
+	charWidth[0] = 0.5;
+
+	vector<double> traslateXParam;
+	traslateXParam.resize(10);
+	traslateXParam[0] = position.x;
+
+	vector<double> traslateYParam;
+	traslateYParam.resize(10);
+	traslateYParam[0] = position.y;
+
+	vector<double> traslateZParam;
+	traslateZParam.resize(10);
+	traslateZParam[0] = position.z;
+
+	vector<double> rgbVec1{ color.r, color.g, color.b };
+	vector<vector<double>>rgbValueVec;
+	rgbValueVec.resize(10);
+	rgbValueVec[0] = rgbVec1;
+
+	vector<vector<double>>scaleValueVec;
+	scaleValueVec.resize(10);
+	scaleValueVec[0] = { 0.025f, 0.025f, 1.0f };
 
 	vector<string>  textToDraw;
 	std::string currentChars = "OpenGL";
@@ -424,10 +453,8 @@ void drawOpenGlIcon(POSITION position, EL_COLOR color)
 	drawChar.setWordToDisplayOnScreen();
 }
 
-void drawiOSIcon(POSITION position, EL_COLOR color)
+void drawCUDAIcon(POSITION position, EL_COLOR color)
 {
-	DrawChars drawChar;
-
 	vector<double> wordSpacVec;
 	wordSpacVec.resize(10);
 	wordSpacVec[0] = 0.0f;
@@ -459,10 +486,55 @@ void drawiOSIcon(POSITION position, EL_COLOR color)
 
 	vector<vector<double>>scaleValueVec;
 	scaleValueVec.resize(10);
-	scaleValueVec[0] = { 0.03f, 0.03f, 1.0f };
-	
+	scaleValueVec[0] = { 0.025f, 0.025f, 1.0f };
+
 	vector<string>  textToDraw;
-	std::string currentChars = "iOS";
+	std::string currentChars = "CUDA";
+	textToDraw.push_back(currentChars);
+
+	drawChar.initDrawChar(wordSpacVec, charSpacVec, charWidth, traslateXParam, traslateYParam,
+		traslateZParam, rgbValueVec, scaleValueVec, textToDraw);
+
+	drawChar.setWordToDisplayOnScreen();
+}
+
+void drawARMIcon(POSITION position, EL_COLOR color)
+{
+	vector<double> wordSpacVec;
+	wordSpacVec.resize(10);
+	wordSpacVec[0] = 0.0f;
+
+	vector<double> charSpacVec;
+	charSpacVec.resize(10);
+	charSpacVec[0] = 0.3f;
+
+	vector<double> charWidth;
+	charWidth.resize(10);
+	charWidth[0] = 0.5;
+
+	vector<double> traslateXParam;
+	traslateXParam.resize(10);
+	traslateXParam[0] = position.x;
+
+	vector<double> traslateYParam;
+	traslateYParam.resize(10);
+	traslateYParam[0] = position.y;
+
+	vector<double> traslateZParam;
+	traslateZParam.resize(10);
+	traslateZParam[0] = position.z;
+
+	vector<double> rgbVec1{ color.r, color.g, color.b };
+	vector<vector<double>>rgbValueVec;
+	rgbValueVec.resize(10);
+	rgbValueVec[0] = rgbVec1;
+
+	vector<vector<double>>scaleValueVec;
+	scaleValueVec.resize(10);
+	scaleValueVec[0] = { 0.025f, 0.025f, 1.0f };
+
+	vector<string>  textToDraw;
+	std::string currentChars = "ARM";
 	textToDraw.push_back(currentChars);
 
 	drawChar.initDrawChar(wordSpacVec, charSpacVec, charWidth, traslateXParam, traslateYParam,
@@ -476,45 +548,44 @@ void DrawElements(void)
 	EL_COLOR color;
 	POSITION pos;
 
-	//level 1 ------------------------------
-	pos = { -6.6f, -6.0f, -15.0f };
 	color = { 1.0f, 1.0f, 1.0f };
+
+	//level 1 ------------------------------
+	pos = { -7.6f, -6.0f, -15.0f };
 	drawMedicalIcon(pos, color);
 
-	pos = { -1.2f, -6.0f, -15.0f };
-	color = { 1.0f, 1.0f, 1.0f };
+	pos = { -2.2f, -6.0f, -15.0f };
 	drawDramaIcon(pos, color);
 
-	pos = { 1.4f, -6.0f, -15.0f };
-	color = { 1.0f, 1.0f, 1.0f };
+	pos = { 0.4f, -6.0f, -15.0f };
 	drawTeacherIcon(pos, color);
 
-	pos = { 4.6f, -6.0f, -15.0f };
-	color = { 1.0f, 1.0f, 1.0f };
+	pos = { 3.6f, -6.0f, -15.0f };
 	drawAstroIcon(pos, color);
 
-	//level 2 ------------------------------
-	pos = { -4.8f, -5.4f, -15.0f };
-	color = { 1.0f, 1.0f, 1.0f };
-	drawWin32Icon(pos, color);
-
-	pos = { -1.3f, -5.4f, -15.0f };
-	color = { 1.0f, 1.0f, 1.0f };
-	drawUnixIcon(pos, color);
-
-	pos = { 1.1f, -5.4f, -15.0f };
-	color = { 1.0f, 1.0f, 1.0f };
-	drawAppleIcon(pos, color);
-
-	pos = { 6.0f, -17.0f, -50.0f };
-	color = { 0.0f, 1.0f, 0.2f };
+	pos = { 7.0f, -6.0f, -15.0f };
 	drawAndroidIcon(pos, color);
 
-	pos = { 10.0f, -20.0f, -50.0f };
-	color = { 1.0f, 1.0f, 1.0f };
+	//level 2 ------------------------------
+	pos = { -4.8f, -5.0f, -15.0f };
+	drawWin32Icon(pos, color);
+
+	pos = { -1.3f, -5.0f, -15.0f };
+	drawUnixIcon(pos, color);
+
+	pos = { 1.1f, -5.0f, -15.0f };
+	drawAppleIcon(pos, color);
+	
+	pos = { 6.5f, -5.0f, -15.0f };
+	drawiOSIcon(pos, color);
+
+	//level 3 -----------------------------
+	pos = { -1.3f, -4.0f, -15.0f };
 	drawOpenGlIcon(pos, color);
 
-	pos = { 14.0f, -15.0f, -50.0f };
-	color = { 1.0f, 1.0f, 1.0f };
-	drawiOSIcon(pos, color);
+	pos = { 1.3f, -4.0f, -15.0f };
+	drawCUDAIcon(pos, color);
+
+	pos = { 3.5f, -4.0f, -15.0f };
+	drawARMIcon(pos, color);
 }
